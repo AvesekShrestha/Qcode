@@ -31,22 +31,18 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
 ?>
 
 <?php
-// $id = $_GET['threadId'];
-// $sql = "SELECT * FROM `coments` WHERE thread_id = $id";
-// $result = mysqli_query($connect , $sql);
-// while($data = mysqli_fetch_assoc($result)){
-//     $thread_user_id = $data['coment_by'];
-//     $sql2 = "SELECT user_name FROM `qlogin` WHERE user_id = $thread_user_id";
-//     $result2 = mysqli_query($connect , $sql2);
-//     $userName = mysqli_fetch_assoc($result2);
-// }
+$id = $_GET['threadId'];
+$sql = "SELECT * FROM `thread_record` WHERE thread_id = $id";
+$result = mysqli_query($connect , $sql);
+while($data = mysqli_fetch_assoc($result)){
+    $user_id = $data['thread_user_id'];
+}
 
-    $user_id = $_SESSION['user_id'];
-    $sql2 = "SELECT user_name FROM `qlogin` WHERE user_id = $user_id";
-    $result2 = mysqli_query($connect , $sql2);
-    while($data = mysqli_fetch_assoc($result2)){
-        $userName = $data['user_name'];
-    }
+$sql2 = "SELECT user_name FROM `qlogin` WHERE user_id = $user_id";
+$result2 = mysqli_query($connect , $sql2);
+while($data = mysqli_fetch_assoc($result2)){
+    $userName = $data['user_name'];
+}
 
 $id = $_GET['threadId'];
 $sql = "SELECT * FROM `thread_record` WHERE thread_id = $id";
@@ -89,7 +85,7 @@ if(isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true){
         
         <div class="col-12 mt-5">
         <button class="btn btn-primary" type="submit">Post Comment</button>
-        <input type="hidden" name="sn" value="'.$_SESSION["user_id"].'">
+        <input type="hidden" name="sn" value="'.$user_id.'">
 
         </div>
     </form>
@@ -107,7 +103,7 @@ else{
             <textarea class="form-control fs-5" id="exampleFormControlTextarea1" rows="3"
             style="width:50vw; height:150px" name="comment" required></textarea>
         </div>
-        <input type="hidden" name="sn" value="'.$_SESSION["user_id"].'">
+        <input type="hidden" name="sn" value="'.$user_id.'">
         
         <div class="col-12 mt-5">
         <button type="submit" class="btn btn-primary" disabled>Post Comment</button>
