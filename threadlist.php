@@ -17,11 +17,11 @@ while($data = mysqli_fetch_assoc($result)){
 <?php
 if($_SERVER['REQUEST_METHOD'] == 'POST'){
 $problemTitle = $_POST['problemTitle'];
-$problemTitle = str_replace("<" ,"&lt", $problemTitle);
-$problemTitle = str_replace(">" ,"&gt" , $problemTitle);
+// $problemTitle = str_replace("<" ,"&lt", $problemTitle);
+// $problemTitle = str_replace(">" ,"&gt" , $problemTitle);
 $problemDesc = $_POST['titleDesc'];
-$problemDesc = str_replace("<", "&lt", $problemDesc);
-$problemDesc = str_replace(">", "&gt", $problemDesc);
+// $problemDesc = str_replace("<", "&lt", $problemDesc);
+// $problemDesc = str_replace(">", "&gt", $problemDesc);
 $userId = $_POST['sn'];
 
 $sql = "INSERT INTO `thread_record` (`thread_title`, `thread_desc`, `thread_cat_id`, `thread_user_id`) VALUES ('$problemTitle', '$problemDesc', '$id', '$userId')";
