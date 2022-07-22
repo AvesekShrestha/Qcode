@@ -22,7 +22,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
                 $_SESSION['loggedin'] = true;
                 $_SESSION['userEmail'] = $userEmail;
                 $_SESSION['user_id'] = $num['user_id'];
-                header("location:home.php?loggin=true");
+                header("location:index.php?loggin=true");
                 
             }
             else{
